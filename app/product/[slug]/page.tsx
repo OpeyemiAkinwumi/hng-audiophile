@@ -36,7 +36,7 @@ export default async function page({ params }: { params: { slug: string } }) {
     <>
       <Navbar />
 
-      <div className="absolute top-40 flex w-[92%] max-w-[1440px] items-center justify-start text-sm font-medium text-black/70 md:w-4/5">
+      <div className="absolute top-30 flex w-[92%] max-w-[1440px] items-center justify-start text-sm font-medium text-black/70 md:top-40 md:w-4/5">
         <GoBackButton />
       </div>
 

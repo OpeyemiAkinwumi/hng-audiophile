@@ -55,8 +55,11 @@
 @media screen and (max-width: 500px) {
   #hero {
     background-image: url(/images/header-mobile.png);
-    #four {
-      background-image: url(/images/speaker-on-table-tab.png);
-    }
+  }
+  #four {
+    background-image: url(/images/speaker-on-table-tab.png);
+  }
+   #man {
+    background-image: url(/images/bitmap.png);
   }
 }

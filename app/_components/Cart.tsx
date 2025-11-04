@@ -29,8 +29,8 @@ export default function Cart({ showCart }: { showCart: () => void }) {
   return (
     <>
       <Overlay showCart={showCart} />
-      <aside className="absolute top-36 right-[10%] z-950 flex items-start justify-end">
-        <div className="relative z-999 flex w-[377px] max-w-[1440px] flex-col items-start justify-start rounded-lg bg-white p-8">
+      <aside className="absolute top-36 right-0 left-0 z-950 m-auto flex items-start justify-center md:right-[10%] md:justify-end">
+        <div className="relative z-999 flex max-w-[377px] md:max-w-[1440px] flex-col items-start justify-start rounded-lg bg-white p-8">
           {cart && cart.length > 0 ? (
             <>
               {" "}
