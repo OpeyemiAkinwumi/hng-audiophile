@@ -29,16 +29,14 @@ export default function Navbar() {
     setShowDropdown((drop) => !drop);
   }
 
-  
-
   // const storedCart = localStorage.getItem("cart");
 
   // const cart = storedCart ? JSON.parse(storedCart) : [];
   // // console.log(cart?.length);
 
   const [cart, setCart] = useState<CartItem[]>(() => {
-    if (typeof window === 'undefined') return [];
-    
+    if (typeof window === "undefined") return [];
+
     const storedCart = localStorage.getItem("cart");
     return storedCart ? JSON.parse(storedCart) : [];
   });
@@ -51,10 +49,10 @@ export default function Navbar() {
     };
 
     // Listen for custom cart update events
-    window.addEventListener('cartUpdated', handleStorageChange);
-    
+    window.addEventListener("cartUpdated", handleStorageChange);
+
     return () => {
-      window.removeEventListener('cartUpdated', handleStorageChange);
+      window.removeEventListener("cartUpdated", handleStorageChange);
     };
   }, []);
 
@@ -139,7 +137,7 @@ export default function Navbar() {
       {/* Dropdown */}
 
       <div
-        className={`absolute ${showDropdown ? "mt-0" : "mt-[-200%]"} top-32 z-700 w-full border-b-10 border-black bg-white text-black transition-all duration-1000 lg:hidden`}
+        className={`absolute ${showDropdown ? "mt-0" : "mt-[-500%]"} top-32 z-700 w-full border-b-10 border-black bg-white text-black transition-all duration-1000 lg:hidden`}
       >
         <GridCard />
       </div>
