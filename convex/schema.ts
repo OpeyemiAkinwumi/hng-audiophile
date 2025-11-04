@@ -13,9 +13,9 @@ export default defineSchema({
       v.object({
         id: v.string(),
         name: v.string(),
-        price: v.string(),
-        quantity: v.string(),
-      })
+        price: v.number(),
+        quantity: v.number(),
+      }),
     ),
     shipping: v.object({
       address: v.string(),
@@ -24,10 +24,10 @@ export default defineSchema({
     }),
     status: v.string(),
     totals: v.object({
-      grandTotal: v.string(),
-      shipping: v.string(),
-      subtotal: v.string(),
-      taxes: v.string(),
+      grandTotal: v.number(),
+      shipping: v.number(),
+      subtotal: v.number(),
+      taxes: v.number(),
     }),
   }),
 });

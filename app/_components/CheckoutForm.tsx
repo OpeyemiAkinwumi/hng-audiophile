@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { OrderFormData } from "./OrderFormData";
 
 const checkoutSchema = z
   .object({
@@ -53,7 +54,11 @@ const checkoutSchema = z
 
 export type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
-export default function CheckoutForm() {
+export default function CheckoutForm({
+  setFormData,
+}: {
+  setFormData: React.Dispatch<React.SetStateAction<OrderFormData | null>>;
+}) {
   const {
     register,
     control,
@@ -66,7 +71,31 @@ export default function CheckoutForm() {
   const payment = useWatch({ control, name: "payment" });
 
   function onSubmit(data: CheckoutFormValues) {
-    console.log(data);
+    console.log("Form values:", data);
+
+    const mappedData: OrderFormData = {
+      createdAt: new Date().toISOString(),
+      customer: {
+        name: data.name,
+        email: data.email,
+        phone: data.phone_no,
+      },
+      shipping: {
+        address: data.address,
+        city: data.city,
+        zip_code: data.zip_code,
+      },
+      items: [], // ✅ will be filled at checkout
+      status: "pending",
+      totals: {
+        subtotal: 0,
+        shipping: 0,
+        taxes: 0,
+        grandTotal: 0,
+      },
+    };
+
+    setFormData(mappedData);
   }
 
   return (

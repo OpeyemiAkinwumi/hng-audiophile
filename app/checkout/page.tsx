@@ -1,19 +1,12 @@
-import GoBackButton from "../_components/GoBackButton";
+import CheckoutConvex from "../_components/CheckoutConvex";
 import Navbar from "../_components/Navbar";
-
-import CheckoutQuotes from "../_components/CheckoutQuotes";
 
 export default function page() {
   return (
     <>
       <Navbar />
 
-      <div className="absolute top-40 flex w-[92%] max-w-[1440px] items-center justify-start text-sm font-medium text-black/70 md:w-4/5">
-        <GoBackButton />
-      </div>
-      <section className="absolute top-0 left-0 -z-10 flex h-full w-full cursor-pointer items-center justify-center bg-black/10"></section>
-
-      <CheckoutQuotes />
+      <CheckoutConvex />
 
       {/* <main className="mx-auto mt-32 grid w-[92%] max-w-[1440px] grid-cols-1 gap-8 md:w-4/5 lg:grid-cols-[2fr_1fr]">
         <div className="w-full rounded-lg bg-white px-12 py-14">

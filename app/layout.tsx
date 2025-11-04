@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-// import Navbar from "./_components/Navbar";
+
 import Footer from "./_components/Footer";
 
 import "./globals.css";
@@ -32,7 +32,6 @@ export default function RootLayout({ children }: LayoutProp) {
       <body
         className={`w-full ${manrope.className} relative flex flex-col items-center justify-start`}
       >
-        {/* <Navbar /> */}
         {children}
         <Footer />
       </body>

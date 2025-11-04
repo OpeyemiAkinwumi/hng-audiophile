@@ -1,8 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { IoMdCheckmark } from "react-icons/io";
 
-export default function CheckoutModal() {
+type CartItem = {
+  name: string;
+  image: string;
+  price: number;
+  quantity: number;
+};
+
+export default function CheckoutModal({ grandTotal }: { grandTotal: number }) {
+  const storedCart = localStorage.getItem("cart");
+
+  const cart: CartItem[] = storedCart ? JSON.parse(storedCart) : [];
+
   return (
     <>
       <main className="absolute top-0 left-0 z-950 flex h-full w-full cursor-pointer items-center justify-center bg-black/50"></main>
@@ -28,34 +41,34 @@ export default function CheckoutModal() {
                 <div className="bg-light flex h-16 w-16 items-center justify-center overflow-hidden rounded-md">
                   <Image
                     className="hidden lg:block"
-                    src="/images/black headphone.png"
+                    src={cart[0].image}
                     width={36.19}
                     height={40}
                     alt="Product Image"
                   />
                   <Image
                     className="block lg:hidden"
-                    src="/images/black headphone.png"
+                    src={cart[0].image}
                     width={36.19}
                     height={40}
                     alt="Product Image"
                   />
                 </div>
                 <div className="text-sm font-bold text-black">
-                  <h4 className="">XX99 MK ii</h4>
-                  <p className="mt-0.5 text-black/60">$ 2,999</p>
+                  <h4 className="">{cart[0].name}</h4>
+                  <p className="mt-0.5 text-black/60">$ {cart[0].price}</p>
                 </div>
               </div>
-              <p className="text-left text-black/70">x1</p>
+              <p className="text-left text-black/70">x{cart[0].quantity}</p>
             </div>
 
-            <p className="text-xs text-black/60">and 2 other item(s)</p>
+            <p className="text-xs text-black/60">and few other other item(s)</p>
           </div>
 
           {/* dark side */}
           <div className="flex h-full w-1/2 flex-col items-start justify-center gap-2 bg-black p-10 text-white">
             <h3 className="text-sm text-white/30">GRAND TOTAL</h3>
-            <p className="text-lg text-white">$ 5,446</p>
+            <p className="text-lg text-white">$ {grandTotal}</p>
           </div>
         </div>
 
