@@ -1,26 +1,62 @@
 @import "tailwindcss";
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
+} */
+
+@theme {
+  --color-main: #d87d4a;
+  --color-main-light: #fbaf85;
+  --color-black: #101010;
+  --color-light: #f1f1f1;
+  --color-lighter: #fafafa;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+#hero {
+  background-image:
+    linear-gradient(to bottom, #101010a9, #10101031),
+    url(/images/header-desk.png);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+#four {
+  background-image: url(/images/speaker-on-table-desktop.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-position: right; */
+}
+
+#ear {
+  background-image:
+    linear-gradient(to bottom, #101010fb, #10101031),
+    url(/images/earphones-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#man {
+  background-image: url(/images/man.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@media screen and (max-width: 1000px) {
+  #hero {
+    background-image:
+      linear-gradient(to bottom, #101010a9, #10101031),
+      url(/images/header-tab.png);
+  }
+  #man {
+    background-image: url(/images/bitmap.png);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media screen and (max-width: 500px) {
+  #hero {
+    background-image: url(/images/header-mobile.png);
+    #four {
+      background-image: url(/images/speaker-on-table-tab.png);
+    }
+  }
 }
