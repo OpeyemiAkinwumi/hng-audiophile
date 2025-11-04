@@ -4,12 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Cart from "./Cart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GridCard from "./GridCard";
+
+type CartItem = {
+  name: string;
+  image: string;
+  price: number;
+  quantity: number;
+};
 
 export default function Navbar() {
   const [displayCart, setDisplayCart] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(true);
+  const [showDropdown, setShowDropdown] = useState(false);
   // const
   const pathname = usePathname();
   // const isActive = pathname === href;
@@ -22,10 +29,34 @@ export default function Navbar() {
     setShowDropdown((drop) => !drop);
   }
 
-  const storedCart = localStorage.getItem("cart");
+  
 
-  const cart = storedCart ? JSON.parse(storedCart) : [];
-  // console.log(cart?.length);
+  // const storedCart = localStorage.getItem("cart");
+
+  // const cart = storedCart ? JSON.parse(storedCart) : [];
+  // // console.log(cart?.length);
+
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    if (typeof window === 'undefined') return [];
+    
+    const storedCart = localStorage.getItem("cart");
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
+
+  // Listen for cart updates
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const storedCart = localStorage.getItem("cart");
+      setCart(storedCart ? JSON.parse(storedCart) : []);
+    };
+
+    // Listen for custom cart update events
+    window.addEventListener('cartUpdated', handleStorageChange);
+    
+    return () => {
+      window.removeEventListener('cartUpdated', handleStorageChange);
+    };
+  }, []);
 
   return (
     <>

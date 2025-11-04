@@ -15,6 +15,8 @@ type CartItem = {
 export default function CheckoutQuotes() {
   const [showModal, setShowModal] = useState(false);
 
+  if (typeof window === "undefined") return []; // ⛔️ Avoid SSR issues in Next.js
+
   const storedCart = localStorage.getItem("cart");
 
   const cart: CartItem[] = storedCart ? JSON.parse(storedCart) : [];
